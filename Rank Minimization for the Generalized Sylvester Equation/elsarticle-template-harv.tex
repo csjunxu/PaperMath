@@ -1,0 +1,415 @@
+%% 
+%% Copyright 2007, 2008, 2009 Elsevier Ltd
+%% 
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%% 
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%% 
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%% 
+%% Template article for Elsevier's document class `elsarticle'
+%% with harvard style bibliographic references
+%% SP 2008/03/01
+
+\documentclass[preprint,12pt,authoryear]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times,authoryear]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn,authoryear]{elsarticle}
+%% \documentclass[final,3p,times,authoryear]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn,authoryear]{elsarticle}
+%% \documentclass[final,5p,times,authoryear]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn,authoryear]{elsarticle}
+
+%% For including figures, graphicx.sty has been loaded in
+%% elsarticle.cls. If you prefer to use the old commands
+%% please give \usepackage{epsfig}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+\usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers.
+%% \usepackage{lineno}
+
+
+\usepackage{bm}
+\usepackage{amsmath}
+%\usepackage{natbib}
+ \usepackage{lipsum}
+
+
+\theoremstyle{cupthm}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lemma}[thm]{Lemma}
+\theoremstyle{cupdefn}
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{cuprem}
+\newtheorem{rem}[thm]{Remark}
+\numberwithin{equation}{section}
+
+
+\journal{Applied Mathematics Letters}
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for theassociated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for theassociated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for theassociated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+\title{Rank Minimization for Sylvester Equation}
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{}
+%% \address[label1]{}
+%% \address[label2]{}
+
+\author{}
+
+\address{}
+
+\begin{abstract}
+Sylvester equation is widely used in many problems in system and automatic control. In this paper, we prove that the well known Roth's similarity theorem (\cite{5}) is a special case of a rank minimization theorem for Sylvester equation.
+\end{abstract}
+
+\begin{keyword}
+Rank Minimization, Sylvester Equation
+
+%% PACS codes here, in the form: \PACS code \sep code
+
+%% MSC codes here, in the form: \MSC code \sep code
+%% or \MSC[2008] code \sep code (2000 is the default)
+
+\end{keyword}
+
+\end{frontmatter}
+
+%% \linenumbers
+
+%% main text
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
+
+\section{Introduction}
+The Sylvester matrix equation is widely used in system and automatic control community \cite{1,2,3,4,5}. In \cite{1}, Dehghan and Hajarian propose two algorithms for finding Hermitian reflexive and skew-Hermitian solutions of Sylvester matrix equations. In \cite{2}， Hajarian proposes a gradient based iterative method to solve the Sylvester matrix equation. In \cite{3}, Wu \textsl{et al.} solves the Sylvester matrix equatio via Kronecker map. In \cite{4}, Hu and Cheng proposed a polynomial solution to the Sylvester matrix equation. Denote by $\bm{A}\in\mathbb{F}^{m\times m}$, $\bm{B}\in\mathbb{F}^{n\times n}$, and $\bm{C}\in\mathbb{F}^{m\times n}$ three given matrices over some field $\mathbb{F}$. Denote by $\text{GL}(n,\mathbb{F})=\{\bm{M}\in\mathbb{F}^{n\times n}|\text{det}\bm{M}\neq0\}$ the general linear group of degree $n$ over the field $\mathbb{F}$. The following theorem is the well-known Roth's similarity theorem, which provides a sufficient and necessary condition for guaranting the consistency of the Sylvester equation (\ref{e1}) in terms of an equivalence between two associated matrices.
+
+
+
+\begin{thm}[\cite{5}] The matrix equation 
+\begin{equation}
+\label{e1}
+\bm{A}\bm{X}-\bm{X}\bm{B}=\bm{C}
+\end{equation}
+is solvable w.r.t $\bm{X}\in\mathbb{F}^{m\times n}$ if and only if there exists a matrix $\bm{P}\in\text{GL}(m+n,\mathbb{F})$ such that 
+\[
+\bm{P}
+\left(
+\begin{array}{cc}
+\bm{A} & \bm{C} \\
+\bm{0} & \bm{B}
+\end{array}
+\right)
+=
+\left(
+\begin{array}{cc}
+\bm{A} & \bm{0} \\
+\bm{0} & \bm{B}
+\end{array}
+\right)
+\bm{P}
+\]
+\end{thm}
+
+\section{Main Results}
+We now generalize the Roth's similarity theorem to a general result based on rank minimization. The purpose of this note is to prove the following theorem.
+\begin{thm} Given $\bm{A},\bm{B},\bm{C}$ defined above, denote by we have
+\\
+\centerline{
+$
+\min
+\{
+\textnormal{rank}
+(\bm{A}\bm{X}-\bm{X}\bm{B}-\bm{C})
+|
+\bm{X}\in\mathbb{F}^{m\times n}
+\}
+$
+}
+\[
+=
+\min
+\left\{
+\textnormal{rank}
+\left[
+\bm{P}
+\left(
+\begin{array}{cc}
+\bm{A} & \bm{C} \\
+\bm{0} & \bm{B}
+\end{array}
+\right)
+-
+\left(
+\begin{array}{cc}
+\bm{A} & \bm{0} \\
+\bm{0} & \bm{B}
+\end{array}
+\right)
+\bm{P}
+\right]
+|
+\bm{P}
+\in
+\textnormal{GL}(m+n,\mathbb{F})
+\right\}
+.
+\]
+\end{thm}
+
+\begin{proof}
+Denote by 
+\begin{equation}
+\alpha(\bm{X})=\bm{A}\bm{X}-\bm{X}\bm{B}-\bm{C},
+\end{equation}
+and
+\begin{equation}
+\beta(\bm{P})=
+\bm{P}
+\left(
+\begin{array}{cc}
+\bm{A} & \bm{C} \\
+\bm{0} & \bm{B}
+\end{array}
+\right)
+-
+\left(
+\begin{array}{cc}
+\bm{A} & \bm{0} \\
+\bm{0} & \bm{B}
+\end{array}
+\right)
+\bm{P}.
+\end{equation}
+Define 
+\begin{equation}
+R_{\alpha}
+=
+\min\textnormal{rank}
+\{
+\alpha(\bm{X})
+|
+\bm{X}
+\in
+\mathbb{F}^{m\times n}
+\}
+\end{equation}
+and 
+\begin{equation}
+R_{\beta}
+=
+\min\textnormal{rank}
+\{
+\beta(\bm{P})
+|
+\bm{P}
+\in
+\textnormal{GL}(m+n,\mathbb{F}).
+\}
+\end{equation}
+From \cite{6,7}, we can obtain that
+\begin{equation}
+R_{\alpha}
+=
+\textnormal{rank}
+\left(
+\begin{array}{cc}
+\bm{A} & \bm{C} \\
+\bm{0} & \bm{B}
+\end{array}
+\right)
+-
+\textnormal{rank}
+\left(
+\begin{array}{cc}
+\bm{A} & \bm{0} \\
+\bm{0} & \bm{B}
+\end{array}
+\right).
+\end{equation}
+For $\bm{P}\in\textnormal{GL}(m+n,\mathbb{F})$, we can obtain that
+\begin{equation}
+\begin{split}
+\textnormal{rank}
+\beta(\bm{P})
+&
+\ge
+\textnormal{rank}
+\bm{P}
+\left(
+\begin{array}{cc}
+\bm{A} & \bm{C} \\
+\bm{0} & \bm{B}
+\end{array}
+\right)
+-
+\textnormal{rank}
+\left(
+\begin{array}{cc}
+\bm{A} & \bm{0} \\
+\bm{0} & \bm{B}
+\end{array}
+\right)
+\bm{P}
+\\
+&
+=
+\textnormal{rank}
+\left(
+\begin{array}{cc}
+\bm{A} & \bm{C} \\
+\bm{0} & \bm{B}
+\end{array}
+\right)
+-
+\textnormal{rank}
+\left(
+\begin{array}{cc}
+\bm{A} & \bm{0} \\
+\bm{0} & \bm{B}
+\end{array}
+\right)
+\\
+&
+=
+R_{\alpha}.
+\end{split}
+\end{equation}
+Hence, we have that $R_{\beta} \ge R_{\alpha}$.
+On the other hand, we denote by 
+\begin{equation}
+\bm{P}_{\bm{X}}
+=
+\left(
+\begin{array}{cc}
+\bm{I} & \bm{X} \\
+\bm{0} & \bm{I}
+\end{array}
+\right),
+\end{equation}
+then we have 
+\begin{equation}
+\beta(\bm{P}_{\bm{X}})
+=
+\left(
+\begin{array}{cc}
+\bm{0} & -\alpha(\bm{X}) \\
+\bm{0} & \bm{0}
+\end{array}
+\right).
+\end{equation}
+Therefore, 
+\begin{equation}
+R_{\beta}
+\le
+\min
+\{
+\textnormal{rank}
+\beta(\bm{P}_{\bm{X}})
+|
+\bm{X}
+\in
+\mathbb{F}^{m\times n}
+\}
+=
+\min
+\{
+\textnormal{rank}
+\alpha(\bm{X})
+\}
+=
+R_{\alpha}.
+\end{equation}
+This completes the proof.
+\end{proof}
+
+
+
+
+
+
+
+%% If you have bibdatabase file and want bibtex to generate the
+%% bibitems, please use
+%%
+%%  \bibliographystyle{elsarticle-harv} 
+%%  \bibliography{<your bibdatabase>}
+
+%% else use the following coding to input the bibitems directly in the
+%% TeX file.
+
+\section*{Reference}
+
+\begin{thebibliography}{100}
+
+%% \bibitem[Author(year)]{label}
+%% Text of bibliographic item
+
+
+\bibitem[Dehghan(2011)]{1} Mehdi Dehghan, Masoud Hajarian, Two algorithms for finding the Hermitian reflexive and skew-Hermitian solutions of Sylvester matrix equations, Applied Mathematics Letters, Volume 24, Issue 4, Pages 444-449, 2011.
+
+\bibitem[Hajarian(2016)]{2} Masoud Hajarian, Solving the general Sylvester discrete-time periodic matrix equations via the gradient based iterative method, Applied Mathematics Letters, Volume 52, Pages 87-95, 2016.
+
+\bibitem[Wu(2008)]{3} Ai-Guo Wu, Feng Zhu, Guang-Ren Duan, Ying Zhang, Solving the generalized Sylvester matrix equation AV+BW=EVF via a Kronecker map, Applied Mathematics Letters, Volume 21, Issue 10, Pages 1069-1073, 2008.
+
+\bibitem[Hu(2006)]{4} Qingxi Hu, Daizhan Cheng, The polynomial solution to the Sylvester matrix equation, Applied Mathematics Letters, Volume 19, Issue 9, Pages 859-864, 2006.
+
+\bibitem[Roth(1952)]{5} R. E. Roth, `The equations $AX-BY=C$ and $AX-XB=C$ in equations', \textsl{Proc. Amer. Math. Soc.} \textbf{3}, 392-396, 1952.
+
+\bibitem[Tian(2002)]{6} Y. Tian, `The minimal rank of matrix expression $A-BX-YC$', \textsl{Missouri J. Math. Sci.} \textbf{14}, 40-48, 2002.
+
+\bibitem[TianMT(2000)]{7} Y. Tian, `Rank equalities related to generalized inverses of matrices and their applications', Master Thesis, Montreal, Quebec, Canada, 2000.
+
+\end{thebibliography}
+
+
+\end{document}
+
+\endinput
+%%
+%% End of file `elsarticle-template-harv.tex'.
